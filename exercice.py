@@ -15,18 +15,45 @@ def convert_to_absolute(number: float) -> float:
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
-    liste = ""
+    liste = []
     i = 0
     for c in prefixes:
-        liste = préfixes[i]+ suffixe
+        liste.append(c + suffixe)
     return liste
 
+def is_prime(number):
+    for i in range(2, number//2, 1):
+        if number % i == 0:
+            return False
+    return True
 
 def prime_integer_summation() -> int:
-    somme = 0
-    for i in range (2, 101, 1):
-        somme += i
-    return somme
+#    compteur = 0
+#    somme = 0
+#    départ = 1
+#    while compteur <= 100:
+#        départ += 1
+#        if départ == 2:
+#            somme = 2
+#        else:
+#            for i in range(2, départ, 1):
+#                reste = départ % i
+#                if reste == 0:
+#                    break
+#                elif i == départ:
+#                    somme += i
+#                    compteur += 1
+#                else:
+#                    continue
+    prime = [2, 3, 5]
+    nombre = 6
+    while len(prime) < 100:
+        if is_prime(nombre):
+            prime.append(nombre)
+        nombre += 1
+        
+            
+    return sum(prime)
 
 
 def factorial(number: int) -> int:
@@ -46,7 +73,21 @@ def use_continue() -> None:
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    acc = []
+    for i in range(1, len(groups)):
+        if 25 in groups[i]:
+            acc.append(True)
+        else:
+            if (len(groups[i]) > 10) or (len(groups[i]) <= 3):
+                acc.append(False)
+            elif max(groups[i]) < 18:
+                acc.append(False)
+            elif (max(groups[i]) > 70) and (50 in groups[i]):
+                acc.append(False)
+            else:
+                acc.append(True)
+                    
+    return acc
 
 
 def main() -> None:
